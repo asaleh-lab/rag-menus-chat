@@ -28,3 +28,11 @@ python src/embed_store.py
 ```
 
 Same chunks, now each one is a list of numbers in an in-memory store. You should see `9 vectors` and `1536 numbers`. Then the three nearest chunks for a cilantro-rice question. That is search, not an answer. There is still no chat model.
+
+## Task 3 — retrieve and stuff
+
+```powershell
+python src/retrieve_stuff.py
+```
+
+Same three chunks as Task 2, then those strings pasted into `{context}`. You should see the filled prompt (the menus sitting in the human message) and then a short answer: cilantro rice is Tuesday and Friday, not Wednesday. Without the stuffing step the model would guess.
