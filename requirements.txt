@@ -1,5 +1,7 @@
 langchain==0.3.27
 langchain-community==0.3.31
+langchain-openai==0.3.28
 langchain-text-splitters==0.3.11
+openai==1.99.9
 pypdf==6.16.1
 python-dotenv==1.1.1

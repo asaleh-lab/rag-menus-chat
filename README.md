@@ -11,7 +11,7 @@ pip install -r requirements.txt
 copy .env.example .env
 ```
 
-Task 1 does not call a model. The key is for later files.
+Task 1 does not call a model. From Task 2 on, put your OpenAI key in `.env`.
 
 ## Task 1 — load and split
 
@@ -20,3 +20,11 @@ python src/load_split.py
 ```
 
 You should see three files become a handful of chunks, each tagged with its source. If a chunk is mid-sentence, that is the splitter: size 250, overlap 50.
+
+## Task 2 — embed and store
+
+```powershell
+python src/embed_store.py
+```
+
+Same chunks, now each one is a list of numbers in an in-memory store. You should see `9 vectors` and `1536 numbers`. Then the three nearest chunks for a cilantro-rice question. That is search, not an answer. There is still no chat model.
