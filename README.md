@@ -36,3 +36,11 @@ python src/retrieve_stuff.py
 ```
 
 Same three chunks as Task 2, then those strings pasted into `{context}`. You should see the filled prompt (the menus sitting in the human message) and then a short answer: cilantro rice is Tuesday and Friday, not Wednesday. Without the stuffing step the model would guess.
+
+## Task 4 — Gradio chat
+
+```powershell
+python src/app.py
+```
+
+Open the local URL Gradio prints. The example question is already there. You should get the same Wednesday answer as Task 3, plus `Sources: mira-counter.md, priya-spice.md`. Ask a follow-up ("what about Friday?") in the same thread; the last turns go into the prompt.
