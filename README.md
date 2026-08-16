@@ -2,6 +2,8 @@
 
 Ask a tiny folder of neighborhood menus. Continues [01 - messy notes to JSON](https://wysiwygs.de/blog/messy-notes-to-json-langchain-flask/). Same three names on Linden Street; these files are the menus, not the shift pad.
 
+**Article:** [Ask a folder of menus with LangChain and Gradio](https://wysiwygs.de/blog/ask-a-folder-of-menus-langchain-gradio/)
+
 ## Setup
 
 ```powershell
