@@ -1,8 +1,8 @@
 # rag-agentic-folder-qa
 
-Ask a tiny folder of neighborhood menus. Continues [01 - messy notes to JSON](https://wysiwygs.de/blog/messy-notes-to-json-langchain-flask/). Same three names on Linden Street; these files are the menus, not the shift pad.
+This repo demonstrates how to create a chatbot on top of domain-specific files. The files are a few kitchen menus (markdown and a PDF). We will get our chat application answering questions from these resources as the source of truth. In other words, this is a RAG application.
 
-**Article:** [Ask a folder of menus with LangChain and Gradio](https://wysiwygs.de/blog/ask-a-folder-of-menus-langchain-gradio/)
+**Article:** [RAG: Ask a folder of menus with LangChain and Gradio](https://wysiwygs.de/blog/ask-a-folder-of-menus-langchain-gradio/)
 
 ## Setup
 
@@ -13,44 +13,38 @@ pip install -r requirements.txt
 copy .env.example .env
 ```
 
-Task 1 does not call a model. From Task 2 on, put your OpenAI key in `.env`.
+Put your OpenAI API key in `.env`.
 
-## Task 1 — load and split
+## Let's load the folder and split it
 
 ```powershell
 python src/load_split.py
 ```
 
-You should see three files become a handful of chunks, each tagged with its source. If a chunk is mid-sentence, that is the splitter: size 250, overlap 50.
-
-## Task 2 — embed and store
+## Now we embed and store
 
 ```powershell
 python src/embed_store.py
 ```
 
-Same chunks, now each one is a list of numbers in an in-memory store. You should see `9 vectors` and `1536 numbers`. Then the three nearest chunks for a cilantro-rice question. That is search, not an answer. There is still no chat model.
-
-## Task 3 — retrieve and stuff
+## Let's retrieve and stuff the prompt
 
 ```powershell
 python src/retrieve_stuff.py
 ```
 
-Same three chunks as Task 2, then those strings pasted into `{context}`. You should see the filled prompt (the menus sitting in the human message) and then a short answer: cilantro rice is Tuesday and Friday, not Wednesday. Without the stuffing step the model would guess.
-
-## Task 4 — Gradio chat
+## Serve it with Gradio
 
 ```powershell
 python src/app.py
 ```
 
-Open the local URL Gradio prints. The example question is already there. You should get the same Wednesday answer as Task 3, plus `Sources: mira-counter.md, priya-spice.md`. Hummus is not on any menu; the bot should say it does not know. Ask a follow-up ("what about Friday?") in the same thread; the last turns go into the prompt.
+Open the local URL Gradio prints.
 
-## Task 5 — same flow in LlamaIndex
+## Same flow in LlamaIndex
 
 ```powershell
 python src/llamaindex_qa.py
 ```
 
-Same cilantro-rice question, different names: `SimpleDirectoryReader`, `SentenceSplitter`, `VectorStoreIndex`, `as_query_engine`. Each line prints the LangChain equivalent. Then it HTTP-gets a fourth stall (Lena's Bakery) from a public gist — same move as fetching a LinkedIn page, just a menu. You should see Wednesday = no, and Lena's tahini roll = not on Monday (the bakery is closed). `data/web/lena-bakery.html` is that page. Set `MENU_URL` in `.env` to fetch a different URL.
+Same menus, same question. Only the library changes (LangChain then LlamaIndex). You should see Wednesday is still no. Wording can differ but the answer should not. The script also fetches a fourth menu from a gist. Set `MENU_URL` in `.env` if you want a different URL.
