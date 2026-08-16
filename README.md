@@ -43,4 +43,12 @@ Same three chunks as Task 2, then those strings pasted into `{context}`. You sho
 python src/app.py
 ```
 
-Open the local URL Gradio prints. The example question is already there. You should get the same Wednesday answer as Task 3, plus `Sources: mira-counter.md, priya-spice.md`. Ask a follow-up ("what about Friday?") in the same thread; the last turns go into the prompt.
+Open the local URL Gradio prints. The example question is already there. You should get the same Wednesday answer as Task 3, plus `Sources: mira-counter.md, priya-spice.md`. Hummus is not on any menu; the bot should say it does not know. Ask a follow-up ("what about Friday?") in the same thread; the last turns go into the prompt.
+
+## Task 5 — same flow in LlamaIndex
+
+```powershell
+python src/llamaindex_qa.py
+```
+
+Same cilantro-rice question, different names: `SimpleDirectoryReader`, `SentenceSplitter`, `VectorStoreIndex`, `as_query_engine`. Each line prints the LangChain equivalent. Then it HTTP-gets a fourth stall (Lena's Bakery) from a public gist — same move as fetching a LinkedIn page, just a menu. You should see Wednesday = no, and Lena's tahini roll = not on Monday (the bakery is closed). `data/web/lena-bakery.html` is that page. Set `MENU_URL` in `.env` to fetch a different URL.
