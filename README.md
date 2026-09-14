@@ -15,7 +15,7 @@ copy .env.example .env
 
 Put your OpenAI API key in `.env`.
 
-## Let's load the folder and split it
+## Load the folder and split it
 
 ```powershell
 python src/load_split.py
@@ -27,7 +27,7 @@ python src/load_split.py
 python src/embed_store.py
 ```
 
-## Let's retrieve and stuff the prompt
+## Retrieve and stuff the prompt
 
 ```powershell
 python src/retrieve_stuff.py
