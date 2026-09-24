@@ -2,8 +2,6 @@
 
 This repo demonstrates how to create a chatbot on top of domain-specific files. The files are a few kitchen menus (markdown and a PDF). We will get our chat application answering questions from these resources as the source of truth. In other words, this is a RAG application.
 
-**Article:** [RAG: Ask a folder of menus with LangChain and Gradio](https://wysiwygs.de/blog/ask-a-folder-of-menus-langchain-gradio/)
-
 ## Setup
 
 ```powershell
